@@ -4,6 +4,11 @@ import './App.css';
 import FirstView from './components/FirstView';
 import SecondView from './components/SecondView';
 import BPMCalc from './components/BPMCalc';
+import Dotenv from 'dotenv';
+import { base } from './firebaseInfo';
+
+
+// require('dotenv').config();
 
 
 class App extends Component {
@@ -13,6 +18,7 @@ class App extends Component {
 
     this.state={
       currentView: null,
+      authed: false,
     }
   }
 
@@ -21,7 +27,6 @@ class App extends Component {
     
     let action1 = () => {
       console.log("first button pressed");
-
       this.setState({
         currentView: "view1"
       });
@@ -30,7 +35,6 @@ class App extends Component {
     
     let action2 = () => {
       console.log("second button pressed");
-
       this.setState({
         currentView: "view2"
       });
@@ -52,7 +56,6 @@ class App extends Component {
           <button onClick={action1}>Button 1</button>
           <button onClick={action2}>Button 2</button>
           <BPMCalc />
-
         </div>
       );
     }else if(this.state.currentView === "view1"){
