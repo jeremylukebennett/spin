@@ -3,11 +3,13 @@ import './App.css';
 import SignIn from './components/SignIn';
 import BPMCalc from './components/BPMCalc';
 import { loginWithGoogle } from './auth';
+// import { storeUserInfo } from './auth'
 import {
   BrowserRouter as Router,
   Route,
   NavLink,
 } from 'react-router-dom';
+// import userInfo from './auth';
 // import logo from './spin-icon.jpg';
 // import FirstView from './components/FirstView';
 // import SecondView from './components/SecondView';
@@ -24,19 +26,24 @@ class App extends Component {
   constructor(props) {
     super(props)
 
+    
     this.state={
       authed: false,
+      user: null
     }
     this.changeAuth = this.changeAuth.bind(this);
   }
 
 
+  // 
   changeAuth(user){
+// I need to set state here to the user object. Then I can pass it down to the library viewing and adding views
     console.log("this should change state");
-    // debugger;
     this.setState({
-      authed: true
-    })
+      authed: true,
+      // user: storeUserInfo,
+      // test: true,
+    });
   }
 
 
@@ -61,8 +68,6 @@ class App extends Component {
 
     return this.state.authed ? (
       <div>
-        <h1>Logged in!</h1>
-        <h4>BPM Calc:</h4>
         <BPMCalc />
         <button>View Library</button>
         <button>Add to Library</button>
