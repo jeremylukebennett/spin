@@ -5,18 +5,17 @@ class SignIn extends Component {
 
     constructor(props) {
         super(props)
-    
-        // this.state={
-        //   foo: false,
-        // }
     }
+
+
+
 
     // Launches authentication via Google
     authenticate(){
 
-        const updateIt = this.props.changeAuth;
+        // const updateIt = this.props.changeAuth;
         // Login via Google and launch updateIt function in App.js 
-        loginWithGoogle(updateIt());
+        loginWithGoogle(this.props.userToApp)
     }
 
     render() {

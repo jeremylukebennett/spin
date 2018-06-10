@@ -32,8 +32,24 @@ class App extends Component {
       user: null
     }
     this.changeAuth = this.changeAuth.bind(this);
+    this.userToApp = this.userToApp.bind(this);
   }
 
+
+  userToApp(user) {
+
+
+
+
+    this.setState({
+      authed: true,
+      user: user,
+      // test: true,
+    });
+
+
+
+  }
 
   // 
   changeAuth(user){
@@ -75,7 +91,8 @@ class App extends Component {
     ) : (
       <div>
         <h1>Login</h1>
-        <SignIn changeAuth={this.changeAuth}/>
+        {/* <SignIn changeAuth={this.changeAuth}/> */}
+        <SignIn userToApp={this.userToApp}/>
       </div>
     )
 
