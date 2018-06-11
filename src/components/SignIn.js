@@ -5,27 +5,25 @@ class SignIn extends Component {
 
     constructor(props) {
         super(props)
-    
-        this.state={
-          foo: false,
-        }
-      }
+    }
 
+
+
+
+    // Launches authentication via Google
     authenticate(){
-        console.log("am I in the authenticate function?");
-        const updateIt = this.props.changeAuth;
-        console.log('updateIt',updateIt);
-        loginWithGoogle(updateIt());
+
+        // const updateIt = this.props.changeAuth;
+        // Login via Google and launch updateIt function in App.js 
+        loginWithGoogle(this.props.userToApp)
     }
 
     render() {
-        debugger
         return(
             <div>
                 <button onClick={() => this.authenticate('google')}>Login</button>
             </div>
         )
-
     }
 
 }
