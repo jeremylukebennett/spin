@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import SignIn from './components/SignIn';
-import BPMCalc from './components/BPMCalc';
 import MainButton from './components/MainButton';
 import addToLibraryView from './components/AddToLibraryView';
 import { loginWithGoogle } from './auth';
@@ -11,17 +10,6 @@ import {
   NavLink,
 } from 'react-router-dom';
 import AddToLibraryView from './components/AddToLibraryView';
-// import userInfo from './auth';
-// import logo from './spin-icon.jpg';
-// import FirstView from './components/FirstView';
-// import SecondView from './components/SecondView';
-// import Dotenv from 'dotenv';
-// import { base } from './firebaseInfo';
-
-
-
-// require('dotenv').config();
-
 
 class App extends Component {
 
@@ -76,7 +64,6 @@ class App extends Component {
     }else if(this.state.authed) {
       return (
         <div>
-          <BPMCalc />
           <MainButton label="View Library"  onClick={() => { this.viewLibraryView() }}/>
           <MainButton label="Add to Library" onClick={() => { this.viewAddToLibrary() }}/>
         </div>
