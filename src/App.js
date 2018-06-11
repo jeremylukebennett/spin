@@ -4,11 +4,11 @@ import SignIn from './components/SignIn';
 import MainButton from './components/MainButton';
 import addToLibraryView from './components/AddToLibraryView';
 import { loginWithGoogle } from './auth';
-import {
-  BrowserRouter as Router,
-  Route,
-  NavLink,
-} from 'react-router-dom';
+// import {
+//   BrowserRouter as Router,
+//   Route,
+//   NavLink,
+// } from 'react-router-dom';
 import AddToLibraryView from './components/AddToLibraryView';
 
 class App extends Component {
@@ -16,7 +16,6 @@ class App extends Component {
   constructor(props) {
     super(props)
 
-    
     this.state={
       authed: false,
       user: null
@@ -26,7 +25,7 @@ class App extends Component {
   userToApp = (user) => {
     this.setState({
       authed: true,
-      user: user,
+      userID: user.user.uid,
     });
   }
 
@@ -52,7 +51,7 @@ class App extends Component {
     if(this.state.view === "addToLibrary") {
       return(
         <div>
-          <AddToLibraryView />
+          <AddToLibraryView userID={this.state.userID}/>
         </div>
       )}
     else if(this.state.view === "viewLibrary") {

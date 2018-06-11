@@ -8,28 +8,28 @@ import { storeTrackInfo } from '../firebaseFunctionality';
 class AddToLibraryView extends React.Component {
 
   stringifyFormData = (fd) => {
-   const data = {};
-     for (let key of fd.keys()) {
-       data[key] = fd.get(key);
-     }
-     return JSON.stringify(data, null, 2);
- }
+    const data = {};
+      for (let key of fd.keys()) {
+        data[key] = fd.get(key);
+      }
+      return JSON.stringify(data, null, 2);
+  }
   
 
   submitTrackData = (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
     let stringifiedData = this.stringifyFormData(data);
-    console.log(stringifiedData);
+    let parsedData = JSON.parse(stringifiedData);
 
-    storeTrackInfo(stringifiedData);
-
+    storeTrackInfo(parsedData, this.props.userID);
   }
 
   render() {
     
     return (
       <div>
+        {/* <div>{this.props.userID}</div> */}
         <form onSubmit={this.submitTrackData}>
             Track:
             <input type="text" name="track"/><br/>
