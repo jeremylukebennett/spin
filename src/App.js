@@ -1,34 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
 import SignIn from './components/SignIn';
-import BPMCalc from './components/BPMCalc';
 import MainButton from './components/MainButton';
 import addToLibraryView from './components/AddToLibraryView';
 import { loginWithGoogle } from './auth';
-import {
-  BrowserRouter as Router,
-  Route,
-  NavLink,
-} from 'react-router-dom';
+// import {
+//   BrowserRouter as Router,
+//   Route,
+//   NavLink,
+// } from 'react-router-dom';
 import AddToLibraryView from './components/AddToLibraryView';
-// import userInfo from './auth';
-// import logo from './spin-icon.jpg';
-// import FirstView from './components/FirstView';
-// import SecondView from './components/SecondView';
-// import Dotenv from 'dotenv';
-// import { base } from './firebaseInfo';
-
-
-
-// require('dotenv').config();
-
 
 class App extends Component {
 
   constructor(props) {
     super(props)
 
-    
     this.state={
       authed: false,
       user: null
@@ -38,7 +25,7 @@ class App extends Component {
   userToApp = (user) => {
     this.setState({
       authed: true,
-      user: user,
+      userID: user.user.uid,
     });
   }
 
@@ -64,7 +51,7 @@ class App extends Component {
     if(this.state.view === "addToLibrary") {
       return(
         <div>
-          <AddToLibraryView />
+          <AddToLibraryView userID={this.state.userID}/>
         </div>
       )}
     else if(this.state.view === "viewLibrary") {
@@ -76,7 +63,6 @@ class App extends Component {
     }else if(this.state.authed) {
       return (
         <div>
-          <BPMCalc />
           <MainButton label="View Library"  onClick={() => { this.viewLibraryView() }}/>
           <MainButton label="Add to Library" onClick={() => { this.viewAddToLibrary() }}/>
         </div>

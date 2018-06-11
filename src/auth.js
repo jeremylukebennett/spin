@@ -24,9 +24,6 @@ export function storeUserInfo(user) {
     let userInfo = user;
     // return user;
     
-    
-    
-    
     // This will push information up to firebase. Use .update instead of .push when you want to edit track info
     // return rebase.initializedApp.database().ref().child('tracks')
     // .push({
