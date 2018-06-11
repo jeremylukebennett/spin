@@ -7,13 +7,12 @@ export function logout() {
 
 
 // 'update' here = changeAuth() function call in App.js. How is this working..?
-export function loginWithGoogle(update) {
+export function loginWithGoogle(updateUserInApp) {
     return rebase.initializedApp.auth().signInWithPopup(googleProvider)
     .then((data) => {
         // Need to send this 'data' object back to App. Use it to set state?
         console.log('user data', data);
-        update(data);
-        // storeUserInfo(data);
+        updateUserInApp(data);
     });
 }
 

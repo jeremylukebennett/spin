@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import SignIn from './components/SignIn';
 import BPMCalc from './components/BPMCalc';
+import MainButton from './components/MainButton';
+import addToLibraryView from './components/AddToLibraryView';
 import { loginWithGoogle } from './auth';
-// import { storeUserInfo } from './auth'
 import {
   BrowserRouter as Router,
   Route,
   NavLink,
 } from 'react-router-dom';
+import AddToLibraryView from './components/AddToLibraryView';
 // import userInfo from './auth';
 // import logo from './spin-icon.jpg';
 // import FirstView from './components/FirstView';
@@ -31,121 +33,62 @@ class App extends Component {
       authed: false,
       user: null
     }
-    this.changeAuth = this.changeAuth.bind(this);
-    this.userToApp = this.userToApp.bind(this);
   }
 
-
-  userToApp(user) {
-
-
-
-
+  userToApp = (user) => {
     this.setState({
       authed: true,
       user: user,
-      // test: true,
     });
-
-
-
   }
 
-  // 
-  changeAuth(user){
-// I need to set state here to the user object. Then I can pass it down to the library viewing and adding views
-    console.log("this should change state");
+  viewAddToLibrary = () => {
+    console.log("second button pressed");
     this.setState({
-      authed: true,
-      // user: storeUserInfo,
-      // test: true,
-    });
+      view: "addToLibrary"
+    })
   }
 
-
-
+  viewLibraryView = () => {
+    console.log("first button pressed");
+    this.setState({
+      view: "viewLibrary"
+    })
+  }
+  
+  
+  
   render() {
     
-    // let action1 = () => {
-    //   console.log("first button pressed");
-    //   this.setState({
-    //     currentView: "view1"
-    //   });
-    //   console.log(this.state.currentView)
-    // }
-    
-    // let action2 = () => {
-    //   console.log("second button pressed");
-    //   this.setState({
-    //     currentView: "view2"
-    //   });
-    // }
-
-
-    return this.state.authed ? (
-      <div>
-        <BPMCalc />
-        <button>View Library</button>
-        <button>Add to Library</button>
-      </div>
-    ) : (
-      <div>
-        <h1>Login</h1>
-        {/* <SignIn changeAuth={this.changeAuth}/> */}
-        <SignIn userToApp={this.userToApp}/>
-      </div>
-    )
-
-
-
-
-    // if(!this.state.authed) {
-    //   return (
-    //     <div>
-    //       <h1>Google Login</h1>
-    //       <SignIn changeAuth={this.changeAuth}/>
-    //     </div>
-    //   )
-    // }else if(this.state.authed) {
-    //   return(
-    //     <div>
-    //       <h1>Logged in!</h1>
-    //       <h4>BPM Calc:</h4>
-    //       <BPMCalc />
-    //     </div>
-    //   )
-    // }
-    
-
-  // if(this.state.currentView === null) {
-  //     return (
-  //       <div className="App">
-  //         <header className="App-header">
-  //           <img src={logo} className="App-logo" alt="logo" />
-  //           <h1 className="App-title">Spin</h1>
-  //         </header>
-  //         <p className="App-intro">
-  //           Demo
-  //         </p>
-
-  //         <button onClick={action1}>Button 1</button>
-  //         <button onClick={action2}>Button 2</button>
-  //         <BPMCalc />
-  //       </div>
-  //     );
-  //   }else if(this.state.currentView === "view1"){
-  //     return(
-  //       <div className="App">
-  //         <FirstView />
-  //       </div>
-  //     );
-  //   }else if(this.state.currentView === "view2"){
-  //     return(
-  //       <div className="App">
-  //         <SecondView />
-  //       </div>      
-  //     );
-  //   }
+    // Renders Add to Library component when that button is clicked and changes state so view : addToLibrary
+    if(this.state.view === "addToLibrary") {
+      return(
+        <div>
+          <AddToLibraryView />
+        </div>
+      )}
+    else if(this.state.view === "viewLibrary") {
+      return(
+        <div>
+          Viewing Library Now
+        </div>
+      )
+    }else if(this.state.authed) {
+      return (
+        <div>
+          <BPMCalc />
+          <MainButton label="View Library"  onClick={() => { this.viewLibraryView() }}/>
+          <MainButton label="Add to Library" onClick={() => { this.viewAddToLibrary() }}/>
+        </div>
+      )
+    }else if(!this.state.authed) {
+      return(
+        <div>
+          <h1>Login</h1>
+          <SignIn userToApp={this.userToApp}/>
+        </div>
+      )
+    }
   }
 }
 
