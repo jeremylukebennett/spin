@@ -7,7 +7,7 @@ class MainButton extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.onClick}>{this.props.label}</button>
+        <button className="main-button" onClick={this.props.onClick}>{this.props.label}</button>
       </div>
     );
   }
