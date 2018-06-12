@@ -11,22 +11,33 @@ class TrackItem extends Component {
     
     render() {
         
-console.log("are we in the TrackItem??");
 
         return(
-            <li>
-                Title: 
-                {this.props.title}
-                Artist: 
-                {this.props.artist}
-                Album: 
-                {this.props.album}
-                genre: 
-                {this.props.genre}
-                BPM: 
-                {this.props.bpm}
-                Notes: 
-                {this.props.notes}
+            <li className="track-info-list-item">
+                <div>
+                    Title: 
+                    {this.props.title}
+                </div>
+                <div>
+                    Artist: 
+                    {this.props.artist}
+                </div>
+                <div>
+                    Album: 
+                    {this.props.album}
+                </div>
+                <div>
+                    Genre: 
+                    {this.props.genre}
+                </div>
+                <div>
+                    BPM: 
+                    {this.props.bpm}
+                </div>
+                <div>
+                    Notes: 
+                    {this.props.notes}
+                </div>
             </li>
         )
     }

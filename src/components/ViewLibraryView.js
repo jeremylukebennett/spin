@@ -47,8 +47,7 @@ class ViewLibraryView extends React.Component {
         return (
         <div>
             <BackButton onClick={this.props.backToHome}/>
-            Viewing library - check console.
-            <ul>
+            <ul className="track-info-list">
                 {libraryRendered}
             </ul>
         </div>
