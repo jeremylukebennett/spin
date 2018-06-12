@@ -10,6 +10,7 @@ import { loginWithGoogle } from './auth';
 //   NavLink,
 // } from 'react-router-dom';
 import AddToLibraryView from './components/AddToLibraryView';
+import ViewLibraryView from './components/ViewLibraryView';
 
 class App extends Component {
 
@@ -27,6 +28,10 @@ class App extends Component {
       authed: true,
       userID: user.user.uid,
     });
+  }
+
+  backToHome = () => {
+    console.log("working? Back to home?");
   }
 
   viewAddToLibrary = () => {
@@ -51,20 +56,29 @@ class App extends Component {
     if(this.state.view === "addToLibrary") {
       return(
         <div>
-          <AddToLibraryView userID={this.state.userID}/>
+          <AddToLibraryView userID={this.state.userID} backToHome={this.backToHome}/>
         </div>
-      )}
+    )}
     else if(this.state.view === "viewLibrary") {
       return(
         <div>
-          Viewing Library Now
+          <ViewLibraryView />
         </div>
       )
     }else if(this.state.authed) {
       return (
-        <div>
-          <MainButton label="View Library"  onClick={() => { this.viewLibraryView() }}/>
-          <MainButton label="Add to Library" onClick={() => { this.viewAddToLibrary() }}/>
+        <div className="container">
+          <div className="row">
+            <div className="col">
+                <div>
+                  <MainButton label="View Library"  onClick={() => { this.viewLibraryView() }}/>
+                </div>
+
+                <div>  
+                  <MainButton label="Add to Library" onClick={() => { this.viewAddToLibrary() }}/>
+                </div>
+            </div>
+          </div>
         </div>
       )
     }else if(!this.state.authed) {

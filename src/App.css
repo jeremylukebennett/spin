@@ -1,4 +1,21 @@
-.App {
+body {
+  background-color: #2F3855;
+  color: #02D4F5;
+}
+
+.main-button {
+  /* border: solid #86c7ff 5px; */
+  color: black;
+  font-size: 2em;
+  border-radius: 50%;
+  height: 4em;
+  width: 4em;
+  margin: -1em 0 0 0;
+  background-color: #02D4F5;
+  font-weight: 200;
+  box-shadow: 1px 1px 3px #0000001f, 0px 0px 1px #0d0d0d00; 
+}
+/* .App {
   text-align: center;
 }
 
@@ -25,4 +42,4 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+} */
