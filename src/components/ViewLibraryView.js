@@ -1,9 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import BPMCalc from './BPMCalc';
 import BackButton from './BackButton';
 import TrackItem from './TrackItem';
-import { pullTrackInfo } from '../firebaseFunctionality';
 
 
 class ViewLibraryView extends React.Component {
@@ -29,7 +26,6 @@ class ViewLibraryView extends React.Component {
             })
         });
     }
-    
     
     render() {
 
