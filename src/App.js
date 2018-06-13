@@ -19,7 +19,8 @@ class App extends Component {
 
     this.state={
       authed: false,
-      user: null
+      user: null,
+      view: ""
     }
   }
 
@@ -32,6 +33,12 @@ class App extends Component {
 
   backToHome = () => {
     console.log("working? Back to home?");
+
+    this.setState({
+      view: "home"
+    })
+
+
   }
 
   viewAddToLibrary = () => {
@@ -49,7 +56,6 @@ class App extends Component {
   }
   
   
-  
   render() {
     
     // Renders Add to Library component when that button is clicked and changes state so view : addToLibrary
@@ -62,10 +68,11 @@ class App extends Component {
     else if(this.state.view === "viewLibrary") {
       return(
         <div>
-          <ViewLibraryView />
+          <ViewLibraryView backToHome={this.backToHome}/>
         </div>
       )
-    }else if(this.state.authed) {
+    }
+    else if(this.state.authed || this.state.view === "home") {
       return (
         <div className="container">
           <div className="row">
