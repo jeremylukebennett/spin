@@ -21,7 +21,6 @@ class ViewLibraryView extends React.Component {
         .then(data => data.json())
         .then((data) => {
 
-            // dataArray becomes an array of objects (of the track info)
             let dataArray = Object.values(data);
             console.log('dataArray',dataArray);
 
@@ -29,7 +28,6 @@ class ViewLibraryView extends React.Component {
                 trackInfo: dataArray,
             })
         });
-
     }
     
     
@@ -46,9 +44,8 @@ class ViewLibraryView extends React.Component {
 
         return (
         <div>
-            <BackButton onClick={this.props.backToHome}/>
-            Viewing library - check console.
-            <ul>
+            <BackButton backToHome={this.props.backToHome}/>
+            <ul className="track-info-list">
                 {libraryRendered}
             </ul>
         </div>

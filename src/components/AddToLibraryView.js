@@ -31,7 +31,7 @@ class AddToLibraryView extends React.Component {
     
     return (
       <div>
-        <BackButton onClick={this.props.backToHome}/>
+        <BackButton backToHome={this.props.backToHome}/>
         {/* <p>Is this back to home: {this.props.backToHome}</p> */}
         <form onSubmit={this.submitTrackData}>
           Track:
