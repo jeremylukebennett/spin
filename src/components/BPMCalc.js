@@ -1,8 +1,14 @@
 import React, { Component }from 'react';
-import ReactDOM from 'react-dom';
 
 
 class BPMCalc extends Component {
+    constructor(props){
+        super(props)
+
+        this.state={
+            bpmPassingFunction: this.props.setBPM,
+        }
+    }
     
     render() {
         
@@ -10,10 +16,47 @@ class BPMCalc extends Component {
             b = new BPM();
         
         function bpm(){
-                console.log("click");
-                
                 setTimeout(function() {
-                console.log(b.tap());
+                // Output
+
+                // b.tap().avg = undefined ? console.log("bad") : console.log("good");
+                // let bpmValue = b.tap().avg;
+                // console.log('bpmValue',bpmValue);
+
+
+                let bpmArray = [];
+                bpmArray.push(b.tap().avg);
+
+                // bpmArray[0] = !undefined ? 
+                // this.props.setBPM(bpmArray[0]) :
+                // console.log("First BPM count: undefined");
+
+
+
+                // let bpmVar = 0;
+                // bpmVar = b.tap().avg;
+                // console.log(bpmVar)
+
+                console.log("bpmArray: ", bpmArray);
+                if(bpmArray[0] === undefined){
+                    console.log("undefined");
+                }else {
+                    console.log("great");
+                    // this.state.bpmPassingFunction(bpmArray[0]);
+                    this.setState({
+                        bpmPassingFunction: bpmArray[0],
+                    })
+
+                    console.log("this.state.bpmPassingFunction", this.state.bpmPassingFunction);
+                    // this.props.setBPM(bpmArray[0]);
+                }
+
+                // this.props.setBPM(b.tap().avg)
+
+
+
+
+                // console.log(b.tap().avg);
                 }, 1000);
         }
 

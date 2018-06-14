@@ -1,46 +1,46 @@
 import React, { Component }from 'react';
-import ReactDOM from 'react-dom';
+import './TrackItem.css';
+import EditModal from './EditModal';
+
 
 
 class TrackItem extends Component {
-    
 
-
-
-
-    
     render() {
         
-
         return(
             <li className="track-info-list-item">
                 <div>
-                    Title: 
-                    {this.props.title}
+                    <div className="track-info-container">
+                        <div className="artist">
+                            {this.props.artist}
+                        </div>
+                        <div className="album">
+                            {this.props.album}
+                        </div>
+                        <div className="bpm">
+                            {this.props.bpm}
+                        </div>
+                        <div className="title">
+                            {this.props.title}
+                        </div>
+                        <div className="genre">
+                            {this.props.genre}
+                        </div>
+                        <div className="notes">
+                            {this.props.notes}
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    Artist: 
-                    {this.props.artist}
-                </div>
-                <div>
-                    Album: 
-                    {this.props.album}
-                </div>
-                <div>
-                    Genre: 
-                    {this.props.genre}
-                </div>
-                <div>
-                    BPM: 
-                    {this.props.bpm}
-                </div>
-                <div>
-                    Notes: 
-                    {this.props.notes}
-                </div>
+                
+            <EditModal title={this.props.title} artist={this.props.artist} album={this.props.album} genre={this.props.genre} bpm={this.props.bpm} notes={this.props.notes} fbID={this.props.fbID}/>
             </li>
         )
     }
 }
 
 export default TrackItem;
+
+
+
+

@@ -1,12 +1,30 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import BPMCalc from './BPMCalc';
 import BackButton from './BackButton';
-import { pushTrackInfo, pullTrackInfo } from '../firebaseFunctionality';
+import { pushTrackInfo } from '../firebaseFunctionality';
 
 
 
 class AddToLibraryView extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      bpm: null,
+    }
+
+    // this.setBPM = this.setBPM.bind(this);
+
+  }
+
+
+  setBPM = (bpmAverage) => {
+
+
+    this.setState({
+      bpm: bpmAverage,
+    })
+  }
 
   stringifyFormData = (fd) => {
     const data = {};
@@ -20,10 +38,14 @@ class AddToLibraryView extends React.Component {
   submitTrackData = (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
-    let stringifiedData = this.stringifyFormData(data);
-    let parsedData = JSON.parse(stringifiedData);
+    console.log('data',data);
 
-    // pullTrackInfo();
+    let stringifiedData = this.stringifyFormData(data);
+    console.log('stringifiedData',stringifiedData);
+    
+    let parsedData = JSON.parse(stringifiedData);
+    console.log('parsedData',parsedData);
+  
     pushTrackInfo(parsedData, this.props.userID);
   }
 
@@ -32,7 +54,6 @@ class AddToLibraryView extends React.Component {
     return (
       <div>
         <BackButton backToHome={this.props.backToHome}/>
-        {/* <p>Is this back to home: {this.props.backToHome}</p> */}
         <form onSubmit={this.submitTrackData}>
           Track:
           <input type="text" name="track"/><br/>
@@ -43,7 +64,7 @@ class AddToLibraryView extends React.Component {
           Genre:
           <input type="text" name="genre"/><br/>
           BPM:
-          <BPMCalc />
+          <BPMCalc setBPM={this.setBPM}/>
           <input type="text" name="bpm"/><br/>
           Notes:
           <input type="text" name="notes"/><br/><br/>

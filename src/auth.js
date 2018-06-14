@@ -21,7 +21,7 @@ export function loginWithGoogle(updateUserInApp) {
 export function storeUserInfo(user) {
     console.log("did i get user info? ", user);
     console.log("did i get user info uid? ", user.user.uid);
-    let userInfo = user;
+    // let userInfo = user;
     // return user;
     
     // This will push information up to firebase. Use .update instead of .push when you want to edit track info

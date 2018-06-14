@@ -1,0 +1,14 @@
+.track-info-container {
+
+    border: solid green 2px;
+}
+
+.track-info-list-item {
+    margin: 1em 0;
+}
+
+.track-info-list-item > div > div > div{
+    border: solid red 2px;
+    display: inline;
+}
+
