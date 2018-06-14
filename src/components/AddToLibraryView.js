@@ -10,7 +10,7 @@ class AddToLibraryView extends React.Component {
     super(props);
 
     this.state = {
-      bpm: null,
+      bpm: [],
     }
 
     // this.setBPM = this.setBPM.bind(this);

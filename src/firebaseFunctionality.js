@@ -34,3 +34,10 @@ export function updateTrackInfo(trackInfo) {
         notes: trackInfo.notes,
     });
 }
+
+
+export function deleteTrackInfo(entryToDelete){
+    console.log(entryToDelete);
+    return rebase.initializedApp.database().ref().child('tracks').child(entryToDelete)
+    .remove()
+}
