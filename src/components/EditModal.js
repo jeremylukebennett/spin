@@ -18,7 +18,7 @@ class EditModal extends React.Component {
             bpm: this.props.bpm,
             notes: this.props.notes,
         }
-        this.editTrackInfo = this.editTrackInfo.bind(this);
+        // this.editTrackInfo = this.editTrackInfo.bind(this);
         this.toggle = this.toggle.bind(this);
     }
     
@@ -53,8 +53,7 @@ class EditModal extends React.Component {
       
         updateTrackInfo(parsedData);
 
-        
-
+        this.props.submitEditWithStateChange(parsedData);
     }
 
 
@@ -94,9 +93,6 @@ class EditModal extends React.Component {
     
     return (
       <div>
-        {/* <style type="text/css">
-            .hidden { display:none; }
-        </style> */}
           <Button onClick={this.toggle}>Edit</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <form onSubmit={this.editTrackInfo}>
@@ -120,7 +116,6 @@ class EditModal extends React.Component {
                             
                 </ModalBody>
                 <ModalFooter>
-                    {/* <Button color="primary" onClick={this.editTrackInfo}>Submit</Button> */}
                     <button color="primary" type="submit" name="submit">Submit</button>
                     <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                 </ModalFooter>

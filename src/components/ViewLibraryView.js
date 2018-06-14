@@ -47,7 +47,7 @@ class ViewLibraryView extends React.Component {
 
 
             return(
-                    <TrackItem title={i.title} artist={i.artist} album={i.album} genre={i.genre} bpm={i.bpm} notes={i.notes} fbID={i.fbID}/>
+                <TrackItem title={i.title} artist={i.artist} album={i.album} genre={i.genre} bpm={i.bpm} notes={i.notes} fbID={i.fbID} />
             )
         });
 

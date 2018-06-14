@@ -2,14 +2,17 @@ import React, { Component }from 'react';
 
 
 class BPMCalc extends Component {
-    constructor(props){
-        super(props)
+    // constructor(props){
+    //     super(props)
 
-        this.state={
-            bpmPassingFunction: this.props.setBPM,
-        }
-    }
+    //     // this.state={
+    //     //     bpmPassingFunction: this.props.setBPM,
+    //     // }
+    // }
     
+    // Try writing a function that will be called below and in that function definition you can update bpm state
+
+
     render() {
         
         let BPM = require('bpm'),
@@ -47,7 +50,7 @@ class BPMCalc extends Component {
                         bpmPassingFunction: bpmArray[0],
                     })
 
-                    console.log("this.state.bpmPassingFunction", this.state.bpmPassingFunction);
+                    console.log("this.state.bpmPassingFunction", this.props.setBPM(bpmArray[0]));
                     // this.props.setBPM(bpmArray[0]);
                 }
 

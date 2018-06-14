@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import SignIn from './components/SignIn';
 import MainButton from './components/MainButton';
-// import {
-//   BrowserRouter as Router,
-//   Route,
-//   NavLink,
-// } from 'react-router-dom';
 import AddToLibraryView from './components/AddToLibraryView';
 import ViewLibraryView from './components/ViewLibraryView';
 
@@ -18,7 +13,8 @@ class App extends Component {
     this.state={
       authed: false,
       user: null,
-      view: ""
+      view: "",
+      userLibraryData: null,
     }
   }
 
@@ -66,7 +62,7 @@ class App extends Component {
     else if(this.state.view === "viewLibrary") {
       return(
         <div>
-          <ViewLibraryView backToHome={this.backToHome}/>
+          <ViewLibraryView backToHome={this.backToHome} />
         </div>
       )
     }
