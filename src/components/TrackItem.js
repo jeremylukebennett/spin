@@ -1,17 +1,17 @@
 import React, { Component }from 'react';
 import './TrackItem.css';
-import ReactDOM from 'react-dom';
+import EditModal from './EditModal';
+
 
 
 class TrackItem extends Component {
-    
+
     render() {
         
         return(
             <li className="track-info-list-item">
                 <div>
                     <div className="track-info-container">
-
                         <div className="artist">
                             {this.props.artist}
                         </div>
@@ -27,50 +27,14 @@ class TrackItem extends Component {
                         <div className="genre">
                             {this.props.genre}
                         </div>
-                        <div>
+                        <div className="notes">
                             {this.props.notes}
                         </div>
-
-                    </div>
-
-                    <button  type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
-                </div>
-
-                {/* // <!-- Modal --> */}
-                <div className="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div className="modal-dialog modal-dialog-centered" role="document">
-                    <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div className="modal-body">
-                        ...
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary">Save changes</button>
-                    </div>
                     </div>
                 </div>
-                </div>
+                
+            <EditModal title={this.props.title} artist={this.props.artist} album={this.props.album} genre={this.props.genre} bpm={this.props.bpm} notes={this.props.notes} fbID={this.props.fbID}/>
             </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         )
     }
 }

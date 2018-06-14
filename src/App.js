@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import SignIn from './components/SignIn';
 import MainButton from './components/MainButton';
-import addToLibraryView from './components/AddToLibraryView';
-import { loginWithGoogle } from './auth';
 // import {
 //   BrowserRouter as Router,
 //   Route,
