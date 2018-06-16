@@ -34,7 +34,7 @@ class EditModal extends React.Component {
             data[key] = fd.get(key);
           }
           return JSON.stringify(data, null, 2);
-      }
+    }
 
     editTrackInfo = (e) => {
         e.preventDefault();
@@ -54,6 +54,7 @@ class EditModal extends React.Component {
         updateTrackInfo(parsedData);
 
         this.props.submitEditWithStateChange(parsedData);
+        this.props.updateUserLibraryData();
     }
 
 

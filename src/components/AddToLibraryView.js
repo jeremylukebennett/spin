@@ -45,8 +45,9 @@ class AddToLibraryView extends React.Component {
     
     let parsedData = JSON.parse(stringifiedData);
     console.log('parsedData',parsedData);
-  
     pushTrackInfo(parsedData, this.props.userID);
+    // this.props.resetUserLibrary();
+    this.props.updateUserLibraryData();
   }
 
   render() {

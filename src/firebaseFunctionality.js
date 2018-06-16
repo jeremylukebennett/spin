@@ -37,7 +37,7 @@ export function updateTrackInfo(trackInfo) {
 
 
 export function deleteTrackInfo(entryToDelete){
-    console.log(entryToDelete);
+    console.log("Entry to delete: ", entryToDelete);
     return rebase.initializedApp.database().ref().child('tracks').child(entryToDelete)
     .remove()
 }
