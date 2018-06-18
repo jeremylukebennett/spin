@@ -2,6 +2,8 @@ import React from 'react';
 import BPMCalc from './BPMCalc';
 import BackButton from './BackButton';
 import { pushTrackInfo } from '../firebaseFunctionality';
+import './AddToLibraryView.css';
+
 
 
 
@@ -12,15 +14,11 @@ class AddToLibraryView extends React.Component {
     this.state = {
       bpm: [],
     }
-
     // this.setBPM = this.setBPM.bind(this);
-
   }
 
 
   setBPM = (bpmAverage) => {
-
-
     this.setState({
       bpm: bpmAverage,
     })
@@ -55,22 +53,26 @@ class AddToLibraryView extends React.Component {
     return (
       <div>
         <BackButton backToHome={this.props.backToHome}/>
-        <form onSubmit={this.submitTrackData}>
-          Track:
-          <input type="text" name="track"/><br/>
-          Artist:
-          <input type="text" name="artist"/><br/>
-          Album:
-          <input type="text" name="album"/><br/>
-          Genre:
-          <input type="text" name="genre"/><br/>
-          BPM:
-          <BPMCalc setBPM={this.setBPM}/>
-          <input type="text" name="bpm"/><br/>
-          Notes:
-          <input type="text" name="notes"/><br/><br/>
-          <button type="submit" name="submit">Submit</button>
-        </form>
+
+        <div className="form-control add-to-library-form-container">
+          <form onSubmit={this.submitTrackData}>
+            Track:
+            <input className="form-control" type="text" name="track"/><br/>
+            Artist:
+            <input className="form-control" type="text" name="artist"/><br/>
+            Album:
+            <input className="form-control" type="text" name="album"/><br/>
+            Genre:
+            <input className="form-control" type="text" name="genre"/><br/>
+            BPM:
+            <BPMCalc setBPM={this.setBPM}/>
+            <input className="form-control" type="text" name="bpm"/><br/>
+            Notes:
+            <input className="form-control" type="text" name="notes"/><br/><br/>
+            <button type="submit" name="submit">Submit</button>
+          </form>
+        </div>
+
       </div>
     );
   }

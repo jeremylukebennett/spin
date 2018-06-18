@@ -6,7 +6,7 @@ class MainButton extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="d-flex justify-content-center">
         <button className="main-button" onClick={this.props.onClick}>{this.props.label}</button>
       </div>
     );

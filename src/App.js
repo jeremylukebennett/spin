@@ -30,7 +30,6 @@ class App extends Component {
 
   backToHome = () => {
     console.log("working? Back to home?");
-
     this.setState({
       view: "home"
     })

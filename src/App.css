@@ -1,6 +1,7 @@
 body {
   background-color: #2F3855;
   color: #02D4F5;
+  font-weight: 200;
 }
 
 .main-button {
@@ -14,6 +15,7 @@ body {
   background-color: #02D4F5;
   font-weight: 200;
   box-shadow: 1px 1px 3px #0000001f, 0px 0px 1px #0d0d0d00; 
+  margin: .7em;
 }
 
 .track-info-list {
