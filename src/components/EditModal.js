@@ -3,6 +3,8 @@ import { updateTrackInfo } from '../firebaseFunctionality';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import BPMCalc from './BPMCalc';
 import './EditModal.css';
+import editIcon from '../images/edit-icon.svg'
+
 
 
 class EditModal extends React.Component {
@@ -92,8 +94,8 @@ class EditModal extends React.Component {
   render() {
     
     return (
-      <div>
-          <Button onClick={this.toggle}>Edit</Button>
+      <div className="edit-modal-container">
+          <input type="image" src={editIcon} className="btTxt edit-icon" onClick={this.toggle}/>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <form onSubmit={this.editTrackInfo}>
                 <ModalHeader toggle={this.toggle}>Edit Track</ModalHeader>

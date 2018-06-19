@@ -31,3 +31,24 @@
     /* left: 5em; */
 
 }
+
+.test {
+    /* position: absolute;
+    top: 6.3em; */
+    /* left: 25em; */
+}
+
+.card-container {
+    border: none;
+    background-color: #02D4F5;
+    color: black;
+}
+
+.trash-icon {
+    width: 2em;
+}
+
+.card-body {
+    width: 17.4em;
+    background-color: #02D4F5;
+}

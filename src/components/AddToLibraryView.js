@@ -12,7 +12,8 @@ class AddToLibraryView extends React.Component {
     super(props);
 
     this.state = {
-      bpm: [],
+      // bpm: 0,
+      value: 0,
     }
     // this.setBPM = this.setBPM.bind(this);
   }
@@ -20,8 +21,9 @@ class AddToLibraryView extends React.Component {
 
   setBPM = (bpmAverage) => {
     this.setState({
-      bpm: bpmAverage,
+      value: bpmAverage,
     })
+    console.log(this.state.value)
   }
 
   stringifyFormData = (fd) => {
@@ -48,6 +50,12 @@ class AddToLibraryView extends React.Component {
     this.props.updateUserLibraryData();
   }
 
+  // componenDidUpdate(prevProps){
+  //   if(prevProps !== this.props) {
+  //     console.log(prevProps);
+  //   }
+  // }
+
   render() {
     
     return (
@@ -66,7 +74,7 @@ class AddToLibraryView extends React.Component {
             <input className="form-control" type="text" name="genre"/><br/>
             BPM:
             <BPMCalc setBPM={this.setBPM}/>
-            <input className="form-control" type="text" name="bpm"/><br/>
+            <input value={this.state.value} className="form-control" type="text" name="bpm"/><br/>
             Notes:
             <input className="form-control" type="text" name="notes"/><br/><br/>
             <button type="submit" name="submit">Submit</button>

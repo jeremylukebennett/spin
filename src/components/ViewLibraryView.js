@@ -5,27 +5,43 @@ import TrackItem from './TrackItem';
 
 class ViewLibraryView extends React.Component {
     
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
 
-        this.state={
+        // this.
+        state={
             searchTerm: "",
             libraryRendered: this.props.trackInfo,
+            search: false,
+        }
+    // }
+
+    // componentDidMount(){
+    //     this.setState({
+    //         libraryRendered: this.props.trackInfo,
+    //     });
+    // }
+
+    componentDidUpdate(prevProps) {
+
+        console.log("prevProps", prevProps);
+        console.log("this.props", this.props);
+
+        if(prevProps !== this.props){
+ 
+            this.setState({
+                libraryRendered: this.props.trackInfo,
+            })
         }
     }
 
-    componentDidUpdate(prevProps) {
-        if(prevProps !== this.props){
-            // this.setState({
-            //     title: this.props.title,
-            //     artist: this.props.artist,
-            //     album: this.props.album,
-            //     genre: this.props.genre,
-            //     bpm: this.props.bpm,
-            //     notes: this.props.notes,
-            // })
-            console.log("prevProps", prevProps);
-            console.log("this.props", this.props);
+    listStuff = () =>{
+        if(!this.state.search){
+            return(
+                this.state.libraryRendered.map(track => 
+                    <TrackItem title={track.title} artist={track.artist} album={track.album} genre={track.genre} bpm={track.bpm} notes={track.notes} fbID={track.fbID} updateUserLibraryData={this.props.updateUserLibraryData} key={track.fbID}/>
+                )
+            )
         }
     }
 
@@ -37,11 +53,21 @@ class ViewLibraryView extends React.Component {
         })
     }
 
+    setSearchState = () =>{
+        this.setState({
+            search: false,
+        })
+    }
 
+    
+    
     filterThroughLibraryData = (searchTerm) => {
-
-        let filteredTracks = this.props.trackInfo.filter(function(obj){
-
+        console.log("filtering search?");
+        let filteredTracks = this.state.libraryRendered.filter(function(obj){
+            if(searchTerm === ""){
+                console.log("nothing");
+                this.props.refresh()
+            }
             // let position = Object.keys(obj).map(function(key){
             //     console.log("obj", obj);
             //     console.log("key", key);
@@ -52,15 +78,30 @@ class ViewLibraryView extends React.Component {
             let position = obj.genre.indexOf(searchTerm);
             return position > -1;
 
-
         });
 
         this.setState({
             libraryRendered: filteredTracks,
         })
     }
+
+    // this.viewLibraryView()
     
-// component
+
+        // componentDidUpdate(prevProps) {
+        //     if(prevProps !== this.props){
+        //         this.setState({
+        //             title: this.props.title,
+        //             artist: this.props.artist,
+        //             album: this.props.album,
+        //             genre: this.props.genre,
+        //             bpm: this.props.bpm,
+        //             notes: this.props.notes,
+        //         })
+        //     }
+        // }
+
+
 
     render() {
 
@@ -73,9 +114,7 @@ class ViewLibraryView extends React.Component {
 
             <ul className="track-info-list">
 
-                {this.state.libraryRendered.map(track => 
-                    <TrackItem title={track.title} artist={track.artist} album={track.album} genre={track.genre} bpm={track.bpm} notes={track.notes} fbID={track.fbID} updateUserLibraryData={this.props.updateUserLibraryData} key={track.fbID}/>
-                )}
+                {this.listStuff()}
 
             </ul>
         </div>

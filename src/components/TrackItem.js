@@ -1,6 +1,8 @@
 import React, { Component }from 'react';
 import './TrackItem.css';
 import EditModal from './EditModal';
+import arrowDropDown from '../images/arrow.png'
+import trashIcon from '../images/delete-icon.png'
 import { deleteTrackInfo } from '../firebaseFunctionality';
 import { UncontrolledCollapse, Button, CardBody, Card } from 'reactstrap';
 
@@ -18,7 +20,6 @@ class TrackItem extends Component {
             genre: this.props.genre,
             bpm: this.props.bpm,
             notes: this.props.notes,
-            // propsLoaded: false,
         })
     }
 
@@ -35,12 +36,6 @@ class TrackItem extends Component {
     }
 
 
-    // setPropsLoadedFalse = () => {
-    //     this.setState({
-    //         propsLoaded: false,
-    //     })
-    // }
-
     handleDelete = () => {
         console.log('this.props.fbID',this.props.fbID);
         deleteTrackInfo(this.props.fbID).then((data) => {
@@ -50,18 +45,18 @@ class TrackItem extends Component {
     }
 
     // This essentially forces the page to remount with any newly updated props (since the props up in state at the top of the page are )
-    componentDidUpdate(prevProps) {
-        if(prevProps !== this.props){
-            this.setState({
-                title: this.props.title,
-                artist: this.props.artist,
-                album: this.props.album,
-                genre: this.props.genre,
-                bpm: this.props.bpm,
-                notes: this.props.notes,
-            })
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     if(prevProps !== this.props){
+    //         this.setState({
+    //             title: this.props.title,
+    //             artist: this.props.artist,
+    //             album: this.props.album,
+    //             genre: this.props.genre,
+    //             bpm: this.props.bpm,
+    //             notes: this.props.notes,
+    //         })
+    //     }
+    // }
 
 
 render() {
@@ -85,18 +80,23 @@ render() {
                         <div className="genre second-line">
                             {this.state.genre}
                         </div>
-                        {/* <div className="notes">
-                            {this.state.notes}
-                        </div> */}
                     </div>
-                    <Button className="collapse-button" color="primary" id={this.props.fbID} style={{ marginBottom: '1rem' }}>
+                    {/* <button className="collapse-button" color="primary" id={this.props.fbID} style={{ marginBottom: '1rem' }}>
                     Toggle
-                    </Button>
+                </button> */}
+                    <input type="image" src={arrowDropDown} name="saveForm" id="saveForm" className="collapse-button btTxt test" id={this.props.fbID} style={{ marginBottom: '1rem' }} />
+
                     <UncontrolledCollapse toggler={this.props.fbID}>
-                    <Card>
+                    <Card className="card-container">
                         <CardBody>
+
+                            <div className="notes">
+                                Notes:<br/>
+                                {this.state.notes}
+                            </div>
+
                             <EditModal title={this.state.title} artist={this.state.artist} album={this.state.album} genre={this.state.genre} bpm={this.state.bpm} notes={this.state.notes} fbID={this.props.fbID} submitEditWithStateChange={this.submitEditWithStateChange}updateUserLibraryData={this.props.updateUserLibraryData}/>
-                            <button onClick={this.handleDelete}>Trash</button>
+                            <input type="image" src={trashIcon} className="btTxt trash-icon" onClick={this.handleDelete}/>
                         </CardBody>
                     </Card>
                     </UncontrolledCollapse>

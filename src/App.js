@@ -97,7 +97,7 @@ class App extends Component {
     else if(this.state.view === "viewLibrary") {
       return(
         <div>
-          <ViewLibraryView backToHome={this.backToHome} trackInfo={this.state.userLibraryData} updateUserLibraryData={this.updateUserLibraryData}/>
+          <ViewLibraryView backToHome={this.backToHome} trackInfo={this.state.userLibraryData} refresh={this.viewLibraryView} updateUserLibraryData={this.updateUserLibraryData}/>
         </div>
       )
     }
