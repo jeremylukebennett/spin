@@ -1,3 +1,8 @@
 .about-text {
     padding: 2em;
 }
+
+#spin-icon {
+  animation: App-logo-spin infinite .6s linear;
+  height: 80px;
+}

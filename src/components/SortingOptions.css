@@ -4,4 +4,7 @@
 
 .btn-group>.btn:first-child {
     margin-left: 1em;
+    background-color: #02D4F5;
+    color: black;
+    box-shadow: 1px 1px 3px #00000047, 0px 0px 1px #0d0d0d00;
 }

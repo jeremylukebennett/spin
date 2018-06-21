@@ -149,7 +149,7 @@ class ViewLibraryView extends React.Component {
                 <input id="search-field" type="text" placeholder="Search library..." onChange={this.searchTermCapture} onKeyUp={() => { this.filterThroughLibraryData(this.state.searchTerm)}}/>
 
 
-                <SortingOptions setSortSelection={this.setSortSelection}/>
+                <SortingOptions setSortSelection={this.setSortSelection} sort={this.state.sort}/>
             </div>
 
             <ul className="track-info-list">
