@@ -5,6 +5,7 @@ import MainButton from './components/MainButton';
 import AddToLibraryView from './components/AddToLibraryView';
 import ViewLibraryView from './components/ViewLibraryView';
 import HomeNav from './components/HomeNav';
+import ViewAbout from './components/ViewAbout';
 
 
 
@@ -47,6 +48,13 @@ class App extends Component {
     console.log("first button pressed");
     this.setState({
       view: "viewLibrary"
+    })
+  }
+
+  viewAbout = () => {
+    console.log("about");
+    this.setState({
+      view: "about"
     })
   }
   
@@ -102,6 +110,13 @@ class App extends Component {
         </div>
       )
     }
+    else if(this.state.view === "about") {
+      return(
+        <div>
+          <ViewAbout backToHome={this.backToHome}/>
+        </div>
+      )
+    }
     else if(this.state.authed && this.state.userLibraryData === null) {
         this.updateUserLibraryData()
         return (
@@ -114,8 +129,7 @@ class App extends Component {
 
         <div>
 
-          {/* nav bar here */}
-          <HomeNav />
+          <HomeNav viewAbout={this.viewAbout}/>
         <div className="container">
           <div className="row">
             <div className="col">

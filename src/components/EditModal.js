@@ -113,14 +113,14 @@ class EditModal extends React.Component {
                         <BPMCalc setBPM={this.props.setBPM} />
                         <input className="form-control" type="text" name="bpm" value={this.state.bpm} onChange={this.handleChangeBPM}/><br/>
                         Notes:
-                        <input className="form-control" type="text" name="notes" value={this.state.notes} onChange={this.handleChangeNotes}/><br/>
+                        <input className="form-control notes-displayed" type="text" name="notes" value={this.state.notes} onChange={this.handleChangeNotes}/><br/>
 
                         <input id="hidden-fbID" type="text" name="fbID" value={this.props.fbID} readOnly="true"/><br/><br/>
                     </div>    
                 </ModalBody>
                 <ModalFooter>
-                    <button color="primary" type="submit" name="submit">Submit</button>
-                    <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                    <button className="submit-btn" type="submit" name="submit" onClick={this.toggle}>Submit</button>
+                    <button className="cancel-btn" onClick={this.toggle}>Cancel</button>
                 </ModalFooter>
                         </form>
                 </Modal>

@@ -2,6 +2,7 @@ body {
   background-color: #2F3855;
   color: #02D4F5;
   font-weight: 200;
+  text-shadow: -1px 1.4px #0000008f;
 }
 
 .main-button {
@@ -20,6 +21,9 @@ body {
 
 .track-info-list {
   list-style-type: none;
+  margin-left: -2em;
+  margin-top: 13em !important;
+  /* display: none; */
 }
 
 #login-title {

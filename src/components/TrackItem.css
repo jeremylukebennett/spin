@@ -45,8 +45,19 @@
 
 .card-body {
     width: 17.4em;
-    /* background-color: #02D4F5; */
-    background: linear-gradient(#02D4F5 96%, rgba(255, 0, 0, 0));
+    background-color: #02D4F5;
+    /* For IE 5.5 - 7*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99222222, endColorstr=#99222222);
+    /* For IE 8*/
+    -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99222222, endColorstr=#99222222);
+    z-index:10;
+    padding:10px;
+-moz-box-shadow:0px 0px 7px #00000060;
+-webkit-box-shadow:0px 0px 7px #00000060;
+box-shadow:0px 0px 7px #00000060;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px; 
 }
 
 .edit-modal-label {

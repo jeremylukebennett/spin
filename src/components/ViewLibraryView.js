@@ -2,6 +2,7 @@ import React from 'react';
 import TrackItem from './TrackItem';
 import './ViewLibraryView.css';
 import ViewNav from './ViewNav';
+import SortingOptions from './SortingOptions';
 
 
 class ViewLibraryView extends React.Component {
@@ -10,6 +11,7 @@ class ViewLibraryView extends React.Component {
             searchTerm: "",
             libraryRendered: this.props.trackInfo,
             search: false,
+            sort: "BPM",
         }
 
     componentDidUpdate(prevProps) {
@@ -28,26 +30,18 @@ class ViewLibraryView extends React.Component {
 
     setBPM = (bpmAverage) => {
 
-        console.log('bpmAverage',bpmAverage);
-        
             this.setState({
               value: bpmAverage,
             })
-        
-            console.log("value in state of 'AddToLibraryView'",this.state.value)
-          }
+    }
 
 
 
 
 
     
-    listStuff = () =>{
-        if(!this.state.search){
-
-
-
-
+    displayUserLibrary = () => {
+        if(!this.state.search && this.state.sort === "BPM"){
 
             return(
                 this.state.libraryRendered.sort(function(a, b){
@@ -58,12 +52,57 @@ class ViewLibraryView extends React.Component {
                     <TrackItem setBPM={this.setBPM} title={track.title} artist={track.artist} album={track.album} genre={track.genre} bpm={track.bpm} notes={track.notes} fbID={track.fbID} updateUserLibraryData={this.props.updateUserLibraryData} key={track.fbID}/>
                 )
             )
-
-
-
-
         }
+
+        else {
+            
+            let sortParameter = this.state.sort;
+            return(
+                this.state.libraryRendered.sort(function(a, b){
+                    
+                    var nameA = a[sortParameter].toUpperCase(); // ignore upper and lowercase
+                    var nameB = b[sortParameter].toUpperCase(); // ignore upper and lowercase
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }
+
+                    // names must be equal
+                    return 0;
+        
+                }).map(track => 
+                    <TrackItem setBPM={this.setBPM} title={track.title} artist={track.artist} album={track.album} genre={track.genre} bpm={track.bpm} notes={track.notes} fbID={track.fbID} updateUserLibraryData={this.props.updateUserLibraryData} key={track.fbID}/>
+                )            
+            )
+        }
+
+
     }
+
+
+
+
+    setSortSelection = (sortSelection) => {
+        console.log('sortSelection',sortSelection);
+        this.setState({
+            sort: sortSelection,
+        })
+        
+
+
+    }
+
+
+
+
+
+
+
+
+
+
 
     searchTermCapture = (e) => {
         console.log("handler!");
@@ -98,6 +137,8 @@ class ViewLibraryView extends React.Component {
 
 
 
+
+
     render() {
 
         return (
@@ -105,16 +146,15 @@ class ViewLibraryView extends React.Component {
             <div className="fixed-top header-bar">
                 <ViewNav title="Your Library" backToHome={this.props.backToHome}/>
 
-                <input id="search-field" type="text" placeholder="Search library..." onChange={this.searchTermCapture} onKeyUp={() => { this.filterThroughLibraryData(this.state.searchTerm)}
+                <input id="search-field" type="text" placeholder="Search library..." onChange={this.searchTermCapture} onKeyUp={() => { this.filterThroughLibraryData(this.state.searchTerm)}}/>
 
-                
 
-    }/>
+                <SortingOptions setSortSelection={this.setSortSelection}/>
             </div>
 
             <ul className="track-info-list">
 
-                {this.listStuff()}
+                {this.displayUserLibrary()}
 
             </ul>
         </div>

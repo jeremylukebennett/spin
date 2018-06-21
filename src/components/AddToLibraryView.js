@@ -1,6 +1,5 @@
 import React from 'react';
 import BPMCalc from './BPMCalc';
-import BackButton from './BackButton';
 import { pushTrackInfo } from '../firebaseFunctionality';
 import './AddToLibraryView.css';
 import ViewNav from './ViewNav';
@@ -20,14 +19,9 @@ class AddToLibraryView extends React.Component {
 
 
   setBPM = (bpmAverage) => {
-
-    console.log('bpmAverage',bpmAverage);
-
     this.setState({
       value: bpmAverage,
     })
-
-    console.log("value in state of 'AddToLibraryView'",this.state.value)
   }
 
 
@@ -51,8 +45,8 @@ class AddToLibraryView extends React.Component {
     let parsedData = JSON.parse(stringifiedData);
     console.log('parsedData',parsedData);
     pushTrackInfo(parsedData, this.props.userID);
-    // this.props.resetUserLibrary();
     this.props.updateUserLibraryData();
+    e.target.reset();
   }
 
   render() {
@@ -76,7 +70,7 @@ class AddToLibraryView extends React.Component {
             <input value={this.state.value} className="form-control" type="text" name="bpm"/><br/>
             Notes:
             <input className="form-control" type="text" name="notes"/><br/><br/>
-            <button type="submit" name="submit">Submit</button>
+            <button className="submit-btn" type="submit" name="submit">Submit</button>
           </form>
         </div>
 

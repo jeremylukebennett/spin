@@ -11,3 +11,22 @@
     display: inline-block;
     margin-right: 11em;
 }
+
+.submit-btn {
+    border: solid black 3px;
+    background-color: #02D4F5;
+}
+
+.cancel-btn {
+    border: solid black 3px;
+    background-color: white;
+}
+
+.form-group {
+    /* margin-bottom: -4em; */
+}
+
+.notes-displayed {
+  box-shadow: none; 
+
+}
