@@ -54,7 +54,7 @@ class ViewLibraryView extends React.Component {
 
     filterThroughLibraryData = (searchTerm) => {
         console.log("filtering search?");
-        let filteredTracks = this.state.libraryRendered.filter(function(obj){
+        let filteredTracks = this.props.trackInfo.filter(function(obj){
             if(searchTerm === ""){
                 console.log("nothing");
             }
@@ -67,8 +67,6 @@ class ViewLibraryView extends React.Component {
                     return true;
                 }
             }
-
-
         });
 
         this.setState({
