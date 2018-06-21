@@ -1,27 +1,121 @@
 import React from 'react';
-import BackButton from './BackButton';
 import TrackItem from './TrackItem';
+import './ViewLibraryView.css';
+import ViewNav from './ViewNav';
 
 
 class ViewLibraryView extends React.Component {
     
-    render() {
+        state={
+            searchTerm: "",
+            libraryRendered: this.props.trackInfo,
+            search: false,
+        }
 
-        console.log('this.props.updateUserLibraryData',this.props.updateUserLibraryData);
-        let updateUserLibraryData = this.props.updateUserLibraryData;
+    componentDidUpdate(prevProps) {
 
-        let libraryRendered = this.props.trackInfo.map(function(i, index){
+        console.log("prevProps", prevProps);
+        console.log("this.props", this.props);
+
+        if(prevProps !== this.props){
+ 
+            this.setState({
+                libraryRendered: this.props.trackInfo,
+            })
+        }
+    }
+
+
+    setBPM = (bpmAverage) => {
+
+        console.log('bpmAverage',bpmAverage);
+        
+            this.setState({
+              value: bpmAverage,
+            })
+        
+            console.log("value in state of 'AddToLibraryView'",this.state.value)
+          }
+
+
+
+
+
+    
+    listStuff = () =>{
+        if(!this.state.search){
+
+
+
+
 
             return(
-                <TrackItem title={i.title} artist={i.artist} album={i.album} genre={i.genre} bpm={i.bpm} notes={i.notes} fbID={i.fbID} updateUserLibraryData={updateUserLibraryData} key={index}/>
+                this.state.libraryRendered.sort(function(a, b){
+
+                    return a.bpm - b.bpm;
+        
+                }).map(track => 
+                    <TrackItem setBPM={this.setBPM} title={track.title} artist={track.artist} album={track.album} genre={track.genre} bpm={track.bpm} notes={track.notes} fbID={track.fbID} updateUserLibraryData={this.props.updateUserLibraryData} key={track.fbID}/>
+                )
             )
+
+
+
+
+        }
+    }
+
+    searchTermCapture = (e) => {
+        console.log("handler!");
+        // set state
+        this.setState({
+            searchTerm: e.target.value,
+        })
+    }
+
+
+    filterThroughLibraryData = (searchTerm) => {
+        console.log("filtering search?");
+        let filteredTracks = this.props.trackInfo.filter(function(obj){
+            if(searchTerm === ""){
+                console.log("nothing");
+            }
+
+            for(let key in obj) {
+                let search = obj[key].toLowerCase();
+                let position = search.indexOf(searchTerm.toLowerCase());
+
+                if(position > -1){
+                    return true;
+                }
+            }
         });
+
+        this.setState({
+            libraryRendered: filteredTracks,
+        })
+    }
+
+
+
+    render() {
 
         return (
         <div>
-            <BackButton backToHome={this.props.backToHome}/>
+            <div className="fixed-top header-bar">
+                <ViewNav title="Your Library" backToHome={this.props.backToHome}/>
+
+                <input id="search-field" type="text" placeholder="Search library..." onChange={this.searchTermCapture} onKeyUp={() => { this.filterThroughLibraryData(this.state.searchTerm)}
+
+                
+
+    }/>
+            </div>
+
             <ul className="track-info-list">
-                {libraryRendered}
+
+                {this.listStuff()}
+
             </ul>
         </div>
         );

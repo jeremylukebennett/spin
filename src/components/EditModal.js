@@ -3,6 +3,8 @@ import { updateTrackInfo } from '../firebaseFunctionality';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import BPMCalc from './BPMCalc';
 import './EditModal.css';
+import editIcon from '../images/edit-icon.svg'
+
 
 
 class EditModal extends React.Component {
@@ -18,7 +20,6 @@ class EditModal extends React.Component {
             bpm: this.props.bpm,
             notes: this.props.notes,
         }
-        // this.editTrackInfo = this.editTrackInfo.bind(this);
         this.toggle = this.toggle.bind(this);
     }
     
@@ -46,10 +47,10 @@ class EditModal extends React.Component {
         console.log('data',data);
     
         let stringifiedData = this.stringifyFormData(data);
-        console.log('stringifiedData',stringifiedData);
+        console.log('Stringified data edited: ',stringifiedData);
         
         let parsedData = JSON.parse(stringifiedData);
-        console.log('parsedData',parsedData);
+        console.log('Parsed data edited: ',parsedData);
       
         updateTrackInfo(parsedData);
 
@@ -93,28 +94,29 @@ class EditModal extends React.Component {
   render() {
     
     return (
-      <div>
-          <Button onClick={this.toggle}>Edit</Button>
+      <div className="edit-modal-container">
+          <input type="image" src={editIcon} className="btTxt edit-icon" onClick={this.toggle}/>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <form onSubmit={this.editTrackInfo}>
-                <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                <ModalHeader toggle={this.toggle}>Edit Track</ModalHeader>
                 <ModalBody>
-                            Track:
-                            <input type="text" name="track" value={this.state.title} onChange={this.handleChangeTrack}/><br/>
-                            Artist:
-                            <input type="text" name="artist" value={this.state.artist} onChange={this.handleChangeArtist}/><br/>
-                            Album:
-                            <input type="text" name="album" value={this.state.album} onChange={this.handleChangeAlbum}/><br/>
-                            Genre:
-                            <input type="text" name="genre" value={this.state.genre} onChange={this.handleChangeGenre}/><br/>
-                            BPM:
-                            <BPMCalc />
-                            <input type="text" name="bpm" value={this.state.bpm} onChange={this.handleChangeBPM}/><br/>
-                            Notes:
-                            <input type="text" name="notes" value={this.state.notes} onChange={this.handleChangeNotes}/><br/>
+                    <div className="form-group">
+                        Track:
+                        <input className="form-control" type="text" name="track" value={this.state.title} onChange={this.handleChangeTrack}/><br/>
+                        Artist:
+                        <input className="form-control" type="text" name="artist" value={this.state.artist} onChange={this.handleChangeArtist}/><br/>
+                        Album:
+                        <input className="form-control" type="text" name="album" value={this.state.album} onChange={this.handleChangeAlbum}/><br/>
+                        Genre:
+                        <input className="form-control" type="text" name="genre" value={this.state.genre} onChange={this.handleChangeGenre}/><br/>
+                        BPM:
+                        <BPMCalc setBPM={this.props.setBPM} />
+                        <input className="form-control" type="text" name="bpm" value={this.state.bpm} onChange={this.handleChangeBPM}/><br/>
+                        Notes:
+                        <input className="form-control" type="text" name="notes" value={this.state.notes} onChange={this.handleChangeNotes}/><br/>
 
-                            <input id="hidden-fbID" type="text" name="fbID" value={this.props.fbID} readOnly="true"/><br/><br/>
-                            
+                        <input id="hidden-fbID" type="text" name="fbID" value={this.props.fbID} readOnly="true"/><br/><br/>
+                    </div>    
                 </ModalBody>
                 <ModalFooter>
                     <button color="primary" type="submit" name="submit">Submit</button>

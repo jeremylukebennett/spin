@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { loginWithGoogle } from '../auth';
+import './SignIn.css';
 
 class SignIn extends Component {
 
@@ -11,8 +12,8 @@ class SignIn extends Component {
 
     render() {
         return(
-            <div>
-                <button onClick={() => this.authenticate('google')}>Login</button>
+            <div className="d-flex justify-content-center">
+                <button className="log-btn" onClick={() => this.authenticate('google')}>Login</button>
             </div>
         )
     }

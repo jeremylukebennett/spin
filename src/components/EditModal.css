@@ -1,3 +1,13 @@
 #hidden-fbID {
     display: none;
 }
+
+.edit-icon {
+    width: 1.8em;
+    display: inline-block;
+}
+
+.edit-modal-container {
+    display: inline-block;
+    margin-right: 11em;
+}

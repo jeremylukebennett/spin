@@ -1,0 +1,12 @@
+.log-btn {
+    color: black;
+    font-size: 2em;
+    border-radius: 50%;
+    height: 4em;
+    width: 4em;
+    margin: -1em 0 0 0;
+    background-color: #02D4F5;
+    font-weight: 200;
+    box-shadow: 1px 1px 3px #0000001f, 0px 0px 1px #0d0d0d00; 
+    margin: .7em;
+}

@@ -1,6 +1,6 @@
 .track-info-container {
-
-    border: solid green 2px;
+    display: inline;
+    /* border: solid green 2px; */
 }
 
 .track-info-list-item {
@@ -8,7 +8,48 @@
 }
 
 .track-info-list-item > div > div > div{
-    border: solid red 2px;
+    /* border: solid red 2px; */
     display: inline;
 }
 
+.first-line {
+    font-size: 1.6em;
+    font-weight: 200;
+}
+
+.second-line {
+    font-weight: 200;
+}
+
+.album {
+    font-style: italic;
+}
+
+.collapse-button {
+    /* display: inline-block; */
+    /* position: absolute; */
+    /* left: 5em; */
+
+}
+
+
+.card-container {
+    border: none;
+    background-color: #02D4F5;
+    color: black;
+}
+
+.trash-icon {
+    width: 2em;
+}
+
+.card-body {
+    width: 17.4em;
+    /* background-color: #02D4F5; */
+    background: linear-gradient(#02D4F5 96%, rgba(255, 0, 0, 0));
+}
+
+.edit-modal-label {
+    font-weight: 500;
+    margin-bottom: -1.3em;
+}
