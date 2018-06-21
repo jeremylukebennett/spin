@@ -95,14 +95,6 @@ render() {
 
 
 
-
-
-
-
-
-
-
-
                     <UncontrolledCollapse toggler={this.props.fbID}>
                     <Card className="card-container">
                         <CardBody>
@@ -112,7 +104,7 @@ render() {
                                 {this.state.notes}
                             </div>
 
-                            <EditModal title={this.state.title} artist={this.state.artist} album={this.state.album} genre={this.state.genre} bpm={this.state.bpm} notes={this.state.notes} fbID={this.props.fbID} submitEditWithStateChange={this.submitEditWithStateChange}updateUserLibraryData={this.props.updateUserLibraryData}/>
+                            <EditModal setBPM={this.props.setBPM} title={this.state.title} artist={this.state.artist} album={this.state.album} genre={this.state.genre} bpm={this.state.bpm} notes={this.state.notes} fbID={this.props.fbID} submitEditWithStateChange={this.submitEditWithStateChange}updateUserLibraryData={this.props.updateUserLibraryData}/>
                             <input type="image" src={trashIcon} className="btTxt trash-icon" onClick={this.handleDelete}/>
                         </CardBody>
                     </Card>

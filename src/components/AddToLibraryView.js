@@ -21,7 +21,7 @@ class AddToLibraryView extends React.Component {
 
   setBPM = (bpmAverage) => {
 
-console.log('bpmAverage',bpmAverage);
+    console.log('bpmAverage',bpmAverage);
 
     this.setState({
       value: bpmAverage,
@@ -30,9 +30,6 @@ console.log('bpmAverage',bpmAverage);
     console.log("value in state of 'AddToLibraryView'",this.state.value)
   }
 
-  // tryPassingBPMArray = (bpmArray) => {
-  //   console.log("bpmArray: ", bpmArray)
-  // }
 
   stringifyFormData = (fd) => {
     const data = {};

@@ -25,16 +25,43 @@ class ViewLibraryView extends React.Component {
         }
     }
 
+
+    setBPM = (bpmAverage) => {
+
+        console.log('bpmAverage',bpmAverage);
+        
+            this.setState({
+              value: bpmAverage,
+            })
+        
+            console.log("value in state of 'AddToLibraryView'",this.state.value)
+          }
+
+
+
+
+
+    
     listStuff = () =>{
         if(!this.state.search){
+
+
+
+
+
             return(
                 this.state.libraryRendered.sort(function(a, b){
+
                     return a.bpm - b.bpm;
         
                 }).map(track => 
-                    <TrackItem title={track.title} artist={track.artist} album={track.album} genre={track.genre} bpm={track.bpm} notes={track.notes} fbID={track.fbID} updateUserLibraryData={this.props.updateUserLibraryData} key={track.fbID}/>
+                    <TrackItem setBPM={this.setBPM} title={track.title} artist={track.artist} album={track.album} genre={track.genre} bpm={track.bpm} notes={track.notes} fbID={track.fbID} updateUserLibraryData={this.props.updateUserLibraryData} key={track.fbID}/>
                 )
             )
+
+
+
+
         }
     }
 
@@ -46,11 +73,6 @@ class ViewLibraryView extends React.Component {
         })
     }
 
-    // setSearchState = () =>{
-    //     this.setState({
-    //         search: false,
-    //     })
-    // }
 
     filterThroughLibraryData = (searchTerm) => {
         console.log("filtering search?");
@@ -74,22 +96,6 @@ class ViewLibraryView extends React.Component {
         })
     }
 
-    // this.viewLibraryView()
-    
-
-        // componentDidUpdate(prevProps) {
-        //     if(prevProps !== this.props){
-        //         this.setState({
-        //             title: this.props.title,
-        //             artist: this.props.artist,
-        //             album: this.props.album,
-        //             genre: this.props.genre,
-        //             bpm: this.props.bpm,
-        //             notes: this.props.notes,
-        //         })
-        //     }
-        // }
-
 
 
     render() {
@@ -100,6 +106,8 @@ class ViewLibraryView extends React.Component {
                 <ViewNav title="Your Library" backToHome={this.props.backToHome}/>
 
                 <input id="search-field" type="text" placeholder="Search library..." onChange={this.searchTermCapture} onKeyUp={() => { this.filterThroughLibraryData(this.state.searchTerm)}
+
+                
 
     }/>
             </div>
