@@ -44,21 +44,6 @@ class TrackItem extends Component {
         });
     }
 
-    // This essentially forces the page to remount with any newly updated props (since the props up in state at the top of the page are )
-    // componentDidUpdate(prevProps) {
-    //     if(prevProps !== this.props){
-    //         this.setState({
-    //             title: this.props.title,
-    //             artist: this.props.artist,
-    //             album: this.props.album,
-    //             genre: this.props.genre,
-    //             bpm: this.props.bpm,
-    //             notes: this.props.notes,
-    //         })
-    //     }
-    // }
-
-
 render() {
     
         return(
@@ -68,7 +53,6 @@ render() {
 
                 <div className="container-fluid">
 
-                    {/* <div className="row"> */}
 
                         <div className="track-info-container">
                             <div className="artist first-line">

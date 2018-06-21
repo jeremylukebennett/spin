@@ -119,8 +119,8 @@ class EditModal extends React.Component {
                     </div>    
                 </ModalBody>
                 <ModalFooter>
-                    <button color="primary" type="submit" name="submit">Submit</button>
-                    <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                    <button className="submit-btn" type="submit" name="submit" onClick={this.toggle}>Submit</button>
+                    <button className="cancel-btn" onClick={this.toggle}>Cancel</button>
                 </ModalFooter>
                         </form>
                 </Modal>

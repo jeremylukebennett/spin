@@ -3,3 +3,8 @@
     border: none;
     color: #02D4F5;
 }
+
+.submit-btn {
+    border: solid black 3px;
+    background-color: #02D4F5;
+}

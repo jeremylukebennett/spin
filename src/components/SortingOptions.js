@@ -1,0 +1,70 @@
+import React from 'react';
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+
+export default class SortingOptions extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: false,
+    };
+  }
+
+  toggle() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
+
+
+  sortSelectionBPM(){
+      console.log("BPM Sort Selected")
+      this.props.setSortSelection("BPM")
+  }
+  sortSelectionGenre(){
+      this.props.setSortSelection("Genre")
+  }
+  sortSelectionArtist(){
+      this.props.setSortSelection("Artist")
+  }
+  sortSelectionAlbum(){
+      this.props.setSortSelection("Album")
+  }
+  sortSelectionTrack(){
+      this.props.setSortSelection("Track")
+  }
+
+  render() {
+    return (
+      <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+        <DropdownToggle caret>
+          Sort By...
+        </DropdownToggle>
+        <DropdownMenu>
+
+            <DropdownItem>
+                <div onClick={this.sortSelectionBPM}>BPM</div>
+            </DropdownItem>
+
+            <DropdownItem>            
+                <div onClick={this.sortSelectionGenre}>Genre</div>
+            </DropdownItem>
+
+            <DropdownItem>
+                <div onClick={this.sortSelectionArtist}>Artist</div>
+            </DropdownItem>
+
+            <DropdownItem>
+                <div onClick={this.sortSelectionAlbum}>Album</div>
+            </DropdownItem>
+
+            <DropdownItem>
+                <div onClick={this.sortSelectionTrack}>Track</div>
+            </DropdownItem>
+
+        </DropdownMenu>
+      </ButtonDropdown>
+    );
+  }
+}
