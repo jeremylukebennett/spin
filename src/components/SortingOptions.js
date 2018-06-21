@@ -11,29 +11,30 @@ export default class SortingOptions extends React.Component {
     };
   }
 
-  toggle() {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
-  }
+    toggle() {
+        this.setState({
+          dropdownOpen: !this.state.dropdownOpen
+        });
+    }
+    
+    sortSelectionBPM = () => {
+        console.log("BPM Sort Selected")
+        this.props.setSortSelection("BPM")
+    }
+    
+    sortSelectionGenre = () => {
+        this.props.setSortSelection("genre")
+    }
 
-
-  sortSelectionBPM(){
-      console.log("BPM Sort Selected")
-      this.props.setSortSelection("BPM")
-  }
-  sortSelectionGenre(){
-      this.props.setSortSelection("Genre")
-  }
-  sortSelectionArtist(){
-      this.props.setSortSelection("Artist")
-  }
-  sortSelectionAlbum(){
-      this.props.setSortSelection("Album")
-  }
-  sortSelectionTrack(){
-      this.props.setSortSelection("Track")
-  }
+    sortSelectionArtist = () => {
+        this.props.setSortSelection("artist")
+    }
+    sortSelectionAlbum = () => {
+        this.props.setSortSelection("album")
+    }
+    sortSelectionTrack = () => {
+        this.props.setSortSelection("title")
+    }
 
   render() {
     return (

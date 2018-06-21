@@ -40,8 +40,8 @@ class ViewLibraryView extends React.Component {
 
 
     
-    listStuff = () => {
-        if(!this.state.search){
+    displayUserLibrary = () => {
+        if(!this.state.search && this.state.sort === "BPM"){
 
             return(
                 this.state.libraryRendered.sort(function(a, b){
@@ -53,7 +53,56 @@ class ViewLibraryView extends React.Component {
                 )
             )
         }
+
+        else {
+            
+            let sortParameter = this.state.sort;
+            return(
+                this.state.libraryRendered.sort(function(a, b){
+                    
+                    var nameA = a[sortParameter].toUpperCase(); // ignore upper and lowercase
+                    var nameB = b[sortParameter].toUpperCase(); // ignore upper and lowercase
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }
+
+                    // names must be equal
+                    return 0;
+        
+                }).map(track => 
+                    <TrackItem setBPM={this.setBPM} title={track.title} artist={track.artist} album={track.album} genre={track.genre} bpm={track.bpm} notes={track.notes} fbID={track.fbID} updateUserLibraryData={this.props.updateUserLibraryData} key={track.fbID}/>
+                )            
+            )
+        }
+
+
     }
+
+
+
+
+    setSortSelection = (sortSelection) => {
+        console.log('sortSelection',sortSelection);
+        this.setState({
+            sort: sortSelection,
+        })
+        
+
+
+    }
+
+
+
+
+
+
+
+
+
+
 
     searchTermCapture = (e) => {
         console.log("handler!");
@@ -87,9 +136,7 @@ class ViewLibraryView extends React.Component {
     }
 
 
-    setSortSelection = (sortSelection) => {
-        console.log('sortSelection',sortSelection);
-    }
+
 
 
     render() {
@@ -107,7 +154,7 @@ class ViewLibraryView extends React.Component {
 
             <ul className="track-info-list">
 
-                {this.listStuff()}
+                {this.displayUserLibrary()}
 
             </ul>
         </div>
