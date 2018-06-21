@@ -63,35 +63,52 @@ render() {
     
         return(
             <li className="track-info-list-item">
-                <div>
-                    <div className="track-info-container">
-                        <div className="artist first-line">
-                            {this.state.artist} - 
+
+
+
+                <div className="container-fluid">
+
+                    {/* <div className="row"> */}
+
+                        <div className="track-info-container">
+                            <div className="artist first-line">
+                                {this.state.artist} - 
+                            </div>
+                            <div className="title first-line">
+                                "{this.state.title}"
+                            </div><br/>
+                            <div className="bpm second-line">
+                                {this.state.bpm} - 
+                            </div>
+                            <div className="album second-line">
+                                {this.state.album} -
+                            </div>
+                            <div className="genre second-line">
+                                {this.state.genre}
+                            </div>
+
+
+
                         </div>
-                        <div className="title first-line">
-                            "{this.state.title}"
-                        </div><br/>
-                        <div className="bpm second-line">
-                            {this.state.bpm} - 
-                        </div>
-                        <div className="album second-line">
-                            {this.state.album} -
-                        </div>
-                        <div className="genre second-line">
-                            {this.state.genre}
-                        </div>
-                    </div>
-                    {/* <button className="collapse-button" color="primary" id={this.props.fbID} style={{ marginBottom: '1rem' }}>
-                    Toggle
-                </button> */}
-                    <input type="image" src={arrowDropDown} name="saveForm" id="saveForm" className="collapse-button btTxt test" id={this.props.fbID} style={{ marginBottom: '1rem' }} />
+                            <input type="image" src={arrowDropDown} name="saveForm" id="saveForm" className="collapse-button btTxt test" id={this.props.fbID} style={{ marginBottom: '1rem' }} />
+                    {/* </div> */}
+
+
+
+
+
+
+
+
+
+
 
                     <UncontrolledCollapse toggler={this.props.fbID}>
                     <Card className="card-container">
                         <CardBody>
 
                             <div className="notes">
-                                Notes:<br/>
+                                <p className="edit-modal-label">Notes:</p><br/>
                                 {this.state.notes}
                             </div>
 

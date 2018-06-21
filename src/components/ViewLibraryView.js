@@ -1,26 +1,16 @@
 import React from 'react';
-import BackButton from './BackButton';
 import TrackItem from './TrackItem';
+import './ViewLibraryView.css';
+import ViewNav from './ViewNav';
 
 
 class ViewLibraryView extends React.Component {
     
-    // constructor(props) {
-    //     super(props);
-
-        // this.
         state={
             searchTerm: "",
             libraryRendered: this.props.trackInfo,
             search: false,
         }
-    // }
-
-    // componentDidMount(){
-    //     this.setState({
-    //         libraryRendered: this.props.trackInfo,
-    //     });
-    // }
 
     componentDidUpdate(prevProps) {
 
@@ -38,7 +28,10 @@ class ViewLibraryView extends React.Component {
     listStuff = () =>{
         if(!this.state.search){
             return(
-                this.state.libraryRendered.map(track => 
+                this.state.libraryRendered.sort(function(a, b){
+                    return a.bpm - b.bpm;
+        
+                }).map(track => 
                     <TrackItem title={track.title} artist={track.artist} album={track.album} genre={track.genre} bpm={track.bpm} notes={track.notes} fbID={track.fbID} updateUserLibraryData={this.props.updateUserLibraryData} key={track.fbID}/>
                 )
             )
@@ -53,30 +46,28 @@ class ViewLibraryView extends React.Component {
         })
     }
 
-    setSearchState = () =>{
-        this.setState({
-            search: false,
-        })
-    }
+    // setSearchState = () =>{
+    //     this.setState({
+    //         search: false,
+    //     })
+    // }
 
-    
-    
     filterThroughLibraryData = (searchTerm) => {
         console.log("filtering search?");
         let filteredTracks = this.state.libraryRendered.filter(function(obj){
             if(searchTerm === ""){
                 console.log("nothing");
-                this.props.refresh()
             }
-            // let position = Object.keys(obj).map(function(key){
-            //     console.log("obj", obj);
-            //     console.log("key", key);
-            //     console.log("obj.key", obj.key);
-            //     console.log("obj.album", obj.album);
-            // })
 
-            let position = obj.genre.indexOf(searchTerm);
-            return position > -1;
+            for(let key in obj) {
+                let search = obj[key].toLowerCase();
+                let position = search.indexOf(searchTerm.toLowerCase());
+
+                if(position > -1){
+                    return true;
+                }
+            }
+
 
         });
 
@@ -107,10 +98,13 @@ class ViewLibraryView extends React.Component {
 
         return (
         <div>
-            <BackButton backToHome={this.props.backToHome}/>
+            <div className="fixed-top header-bar">
+                <ViewNav title="Your Library" backToHome={this.props.backToHome}/>
 
-            <input type="text" placeholder="Search library..." onChange={this.searchTermCapture} onKeyUp={() => { this.filterThroughLibraryData(this.state.searchTerm) }
-}/>
+                <input id="search-field" type="text" placeholder="Search library..." onChange={this.searchTermCapture} onKeyUp={() => { this.filterThroughLibraryData(this.state.searchTerm)}
+
+    }/>
+            </div>
 
             <ul className="track-info-list">
 

@@ -4,6 +4,7 @@ import SignIn from './components/SignIn';
 import MainButton from './components/MainButton';
 import AddToLibraryView from './components/AddToLibraryView';
 import ViewLibraryView from './components/ViewLibraryView';
+import HomeNav from './components/HomeNav';
 
 
 
@@ -110,6 +111,11 @@ class App extends Component {
 
     else if(this.state.authed || this.state.view === "home") {
       return (
+
+        <div>
+
+          {/* nav bar here */}
+          <HomeNav />
         <div className="container">
           <div className="row">
             <div className="col">
@@ -123,11 +129,12 @@ class App extends Component {
             </div>
           </div>
         </div>
+        </div>
       )
     }else if(!this.state.authed) {
       return(
         <div>
-          <h1>Login</h1>
+          <h1 id="login-title">Spin</h1>
           <SignIn userToApp={this.userToApp}/>
         </div>
       )

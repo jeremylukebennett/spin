@@ -3,6 +3,7 @@ import BPMCalc from './BPMCalc';
 import BackButton from './BackButton';
 import { pushTrackInfo } from '../firebaseFunctionality';
 import './AddToLibraryView.css';
+import ViewNav from './ViewNav';
 
 
 
@@ -12,18 +13,18 @@ class AddToLibraryView extends React.Component {
     super(props);
 
     this.state = {
-      // bpm: 0,
       value: 0,
     }
-    // this.setBPM = this.setBPM.bind(this);
+    
   }
 
 
   setBPM = (bpmAverage) => {
-    console.log('bpmAverage',60000/bpmAverage);
+
+console.log('bpmAverage',bpmAverage);
 
     this.setState({
-      value: Math.floor(60000/bpmAverage),
+      value: bpmAverage,
     })
 
     console.log("value in state of 'AddToLibraryView'",this.state.value)
@@ -57,18 +58,12 @@ class AddToLibraryView extends React.Component {
     this.props.updateUserLibraryData();
   }
 
-  // componenDidUpdate(prevProps){
-  //   if(prevProps !== this.props) {
-  //     console.log(prevProps);
-  //   }
-  // }
-
   render() {
     
     return (
       <div>
-        <BackButton backToHome={this.props.backToHome}/>
-
+        {/* <BackButton backToHome={this.props.backToHome}/> */}
+        <ViewNav title="Add to Library" backToHome={this.props.backToHome}/>
         <div className="form-control add-to-library-form-container">
           <form onSubmit={this.submitTrackData}>
             Track:

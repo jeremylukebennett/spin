@@ -4,10 +4,13 @@ import React, { Component }from 'react';
 class BPMCalc extends Component {
     constructor(props){
         super(props)
-
-        // this.state={
-        //     bpmPassingFunction: this.props.setBPM,
-        // }
+        
+        this.state={
+        }
+        
+        this.totalBPMs= [];
+        this.average=0;
+        this.counter=0;
     }
     
     // Try writing a function that will be called below and in that function definition you can update bpm state
@@ -15,13 +18,13 @@ class BPMCalc extends Component {
     
     render() {
         
-
         let beatTime = [];
-        let startTime = new Date();
-        // let diff = [];
         let beatsPer = 0;
-        // console.log('beatsPer',beatsPer);
+        let startTime = new Date();
+        
+        
         let bpm = () => {
+            this.counter++;
             let bpmArray = [];
             console.log("BPM running")
             
@@ -37,21 +40,30 @@ class BPMCalc extends Component {
                 ? bpmArray.push(beatTime[i] - startTime)
                 : bpmArray.push(beatTime[i] - beatTime[i-1]);
             }
-            console.log('bpmArray',bpmArray[bpmArray.length-1]);
+
             beatsPer = Math.floor(60000/bpmArray[bpmArray.length-1])
+            console.log('beatsPer',beatsPer);
+            
 
-            console.log('beatsPer',beatsPer.toString());
+            // Only adds to the totalBPMs array if its *not* the first click
+            if(this.counter === 1){
+                return
+            }else{
+                this.totalBPMs.push(beatsPer);
+                console.log('this.totalBPMs',this.totalBPMs);
+            }
 
-            this.props.setBPM(bpmArray[bpmArray.length-1])
-
-
-
-            // document.querySelector("#output").innerHTML = Math.floor(60000/bpmArray[bpmArray.length-1])
-            // console.log("result: ", Math.floor(60000/bpmArray[bpmArray.length-1]))
-            // console.log('beatsPer',beatsPer);
-            // this.props.setBPM(Math.floor(beatsPer))
-            // this.props.setBPM(beatsPer)
+            this.sum = 0;
+            for (let i = 0; i < this.totalBPMs.length; i++){
+                if(this.counter === 0) { console.log("dont do anything") 
+                }else{ 
+                    this.sum += this.totalBPMs[i];
+                    this.average = Math.floor(this.sum/this.totalBPMs.length);
+                    this.props.setBPM(this.average);
+                }
+            }
         }
+
 
 
         return(

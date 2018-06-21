@@ -21,6 +21,12 @@ body {
 .track-info-list {
   list-style-type: none;
 }
+
+#login-title {
+  font-weight: 200;
+  font-size: 4em;
+}
+
 /* .App {
   text-align: center;
 }

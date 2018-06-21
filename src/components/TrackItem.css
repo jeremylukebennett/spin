@@ -32,11 +32,6 @@
 
 }
 
-.test {
-    /* position: absolute;
-    top: 6.3em; */
-    /* left: 25em; */
-}
 
 .card-container {
     border: none;
@@ -50,5 +45,11 @@
 
 .card-body {
     width: 17.4em;
-    background-color: #02D4F5;
+    /* background-color: #02D4F5; */
+    background: linear-gradient(#02D4F5 96%, rgba(255, 0, 0, 0));
+}
+
+.edit-modal-label {
+    font-weight: 500;
+    margin-bottom: -1.3em;
 }

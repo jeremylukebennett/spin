@@ -1,0 +1,11 @@
+.header-bar {
+    background: linear-gradient(#2F3855 70%, rgba(255, 0, 0, 0));
+}
+
+.track-info-list{
+    margin-top: 10em;
+}
+
+#search-field {
+    margin-bottom: 3em;
+}
