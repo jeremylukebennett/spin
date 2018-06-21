@@ -1,5 +1,6 @@
 import React from 'react';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import './SortingOptions.css';
 
 export default class SortingOptions extends React.Component {
   constructor(props) {
@@ -39,8 +40,10 @@ export default class SortingOptions extends React.Component {
   render() {
     return (
       <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <DropdownToggle caret>
-          Sort By...
+        <DropdownToggle caret color="link">
+            <span>
+                Sort By...
+            </span>
         </DropdownToggle>
         <DropdownMenu>
 

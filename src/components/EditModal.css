@@ -25,3 +25,8 @@
 .form-group {
     /* margin-bottom: -4em; */
 }
+
+.notes-displayed {
+  box-shadow: none; 
+
+}

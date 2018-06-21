@@ -21,6 +21,9 @@ body {
 
 .track-info-list {
   list-style-type: none;
+  margin-left: -2em;
+  margin-top: 13em !important;
+  /* display: none; */
 }
 
 #login-title {

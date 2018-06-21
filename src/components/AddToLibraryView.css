@@ -8,3 +8,7 @@
     border: solid black 3px;
     background-color: #02D4F5;
 }
+
+form{
+    padding: 2em;
+}

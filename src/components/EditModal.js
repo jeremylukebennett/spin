@@ -113,7 +113,7 @@ class EditModal extends React.Component {
                         <BPMCalc setBPM={this.props.setBPM} />
                         <input className="form-control" type="text" name="bpm" value={this.state.bpm} onChange={this.handleChangeBPM}/><br/>
                         Notes:
-                        <input className="form-control" type="text" name="notes" value={this.state.notes} onChange={this.handleChangeNotes}/><br/>
+                        <input className="form-control notes-displayed" type="text" name="notes" value={this.state.notes} onChange={this.handleChangeNotes}/><br/>
 
                         <input id="hidden-fbID" type="text" name="fbID" value={this.props.fbID} readOnly="true"/><br/><br/>
                     </div>    
