@@ -42,7 +42,9 @@ export default class SortingOptions extends React.Component {
       <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle caret color="link">
             <span>
-                Sort By...
+                Sort By...<br/>
+                {(this.props.sort).charAt(0).toUpperCase() + (this.props.sort).slice(1)}
+
             </span>
         </DropdownToggle>
         <DropdownMenu>
