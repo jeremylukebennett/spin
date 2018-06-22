@@ -70,14 +70,10 @@ render() {
                             <div className="genre second-line">
                                 {this.state.genre}
                             </div>
-
-
-
                         </div>
-                            <input type="image" src={arrowDropDown} name="saveForm" id="saveForm" className="collapse-button btTxt test" id={this.props.fbID} style={{ marginBottom: '1rem' }} />
-                    {/* </div> */}
 
-
+                    <input type="image" src={arrowDropDown} name="saveForm" id="saveForm" className="collapse-button btTxt arrow-drop-down" id={this.props.fbID} style={{ marginBottom: '1rem' }} />
+                            
 
                     <UncontrolledCollapse toggler={this.props.fbID}>
                     <Card className="card-container">
@@ -93,6 +89,8 @@ render() {
                         </CardBody>
                     </Card>
                     </UncontrolledCollapse>
+                    <hr/>
+
                 </div>
                 {/* This edit and trash buttons need to go into a dropdown below the item listing */}
 

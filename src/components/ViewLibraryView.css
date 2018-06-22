@@ -1,9 +1,10 @@
 .header-bar {
     background: linear-gradient(#2F3855 70%, rgba(255, 0, 0, 0));
+    height: 16em;
 }
 
 .track-info-list{
-    margin-top: 10em;
+    margin-top: 15.4em;
 }
 
 #search-field {

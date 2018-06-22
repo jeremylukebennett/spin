@@ -1,5 +1,6 @@
 .track-info-container {
     display: inline;
+    color: white;
     /* border: solid green 2px; */
 }
 
@@ -55,4 +56,12 @@ border-radius: 4px;
 .edit-modal-label {
     font-weight: 500;
     margin-bottom: -1.3em;
+}
+
+.arrow-drop-down{
+    float: right;
+}
+
+.notes {
+    text-shadow: none;
 }
