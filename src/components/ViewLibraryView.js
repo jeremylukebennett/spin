@@ -35,11 +35,6 @@ class ViewLibraryView extends React.Component {
             })
     }
 
-
-
-
-
-    
     displayUserLibrary = () => {
         if(!this.state.search && this.state.sort === "BPM"){
 
@@ -90,16 +85,7 @@ class ViewLibraryView extends React.Component {
             sort: sortSelection,
         })
         
-
-
     }
-
-
-
-
-
-
-
 
 
 
